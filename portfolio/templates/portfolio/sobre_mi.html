@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí - Santiago Joya</title>
+    <link rel="icon" type="image/png" href="{% static 'portfolio/img/Favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/sobre_mi.css' %}">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Santiago Joya</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}" id="nav-home">Inicio</a></li>
+            <li><a href="{% url 'sobre_mi' %}" class="active" id="nav-about">Sobre mí</a></li>
+            <li><a href="#" id="nav-projects">Proyectos</a></li>
+            <li><a href="#" id="nav-contact">Contacto</a></li>
+        </ul>
+
+        <!-- Botones de modo oscuro e idioma -->
+        <div class="nav-right">
+            <button id="lang-toggle" class="nav-btn">🌐 EN</button>
+            <button id="dark-mode-toggle" class="nav-btn">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Sección principal -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="{% static 'portfolio/img/Perfil.jpg' %}" alt="Foto de perfil" class="about-photo">
+            </div>
+            <div class="about-text">
+                <h1 id="title">Sobre mí</h1>
+                <p id="bio">
+                    Soy ingeniero de Software Junior apasionado por crear soluciones eficientes y escalables.
+                    Experiencia en HTML, CSS, Python, PHP, Laravel, Django y bases de datos SQL/PostgreSQL/MySQL.
+                    He desarrollado proyectos con CRUDs, sistemas de gestión y formularios interactivos.
+                    Comprometido con escribir código limpio, resolver problemas complejos y aprender nuevas tecnologías.
+                    Busco crecer profesionalmente y contribuir a proyectos innovadores en equipos dinámicos.
+                </p>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Santiago Joya Blanco</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Modo oscuro
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Cambio de idioma
+        const langToggle = document.getElementById('lang-toggle');
+        const title = document.getElementById('title');
+        const bio = document.getElementById('bio');
+
+        const navHome = document.getElementById('nav-home');
+        const navAbout = document.getElementById('nav-about');
+        const navProjects = document.getElementById('nav-projects');
+        const navContact = document.getElementById('nav-contact');
+
+        let lang = 'es';
+
+        langToggle.addEventListener('click', () => {
+            if (lang === 'es') {
+                // Cambiar a inglés
+                title.textContent = 'About Me';
+                bio.textContent =
+                    "I am a Junior Software Engineer passionate about building efficient and scalable solutions. I have experience with HTML, CSS, Python, PHP, Laravel, Django, and SQL databases such as PostgreSQL and MySQL. I've developed CRUD systems, management tools, and interactive forms. I’m committed to clean code, problem-solving, and continuous learning to grow as a developer and contribute to innovative projects.";
+
+                navHome.textContent = 'Home';
+                navAbout.textContent = 'About Me';
+                navProjects.textContent = 'Projects';
+                navContact.textContent = 'Contact';
+
+                langToggle.textContent = '🌐 ES';
+                lang = 'en';
+            } else {
+                // Cambiar a español
+                title.textContent = 'Sobre mí';
+                bio.textContent =
+                    "Soy ingeniero de Software Junior apasionado por crear soluciones eficientes y escalables. Experiencia en HTML, CSS, Python, PHP, Laravel, Django y bases de datos SQL/PostgreSQL/MySQL. He desarrollado proyectos con CRUDs, sistemas de gestión y formularios interactivos. Comprometido con escribir código limpio, resolver problemas complejos y aprender nuevas tecnologías. Busco crecer profesionalmente y contribuir a proyectos innovadores en equipos dinámicos.";
+
+                navHome.textContent = 'Inicio';
+                navAbout.textContent = 'Sobre mí';
+                navProjects.textContent = 'Proyectos';
+                navContact.textContent = 'Contacto';
+
+                langToggle.textContent = '🌐 EN';
+                lang = 'es';
+            }
+        });
+    </script>
+</body>
+
+</html>

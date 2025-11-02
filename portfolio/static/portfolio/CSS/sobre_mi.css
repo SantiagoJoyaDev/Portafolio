@@ -1,0 +1,409 @@
+/* ==========================
+   RESET Y ESTILOS GENERALES
+========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    color: #333;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background: #1a2332;
+    color: #e2e8f0;
+}
+
+/* ==========================
+   NAVBAR (sin cambios)
+========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(15px);
+    padding: 1.2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 25px rgba(30, 60, 114, 0.15);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+body.dark-mode .navbar {
+    background: rgba(26, 35, 50, 0.98);
+    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body.dark-mode .logo {
+    background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1e3c72;
+    font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+}
+
+body.dark-mode .nav-links a {
+    color: #e2e8f0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    font-weight: 500;
+    border: none;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+}
+
+body.dark-mode .nav-btn {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+body.dark-mode .nav-btn:hover {
+    box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+}
+
+/* ==========================
+   PARTICULAS SUAVES DE FONDO
+========================== */
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 5% 6rem;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+body.dark-mode .about-section {
+    background: #121b2c;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(30, 82, 152, 0.2);
+    animation: float 6s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+/* ==========================
+   CONTENEDOR SOBRE MÍ
+========================== */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 1100px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    flex: 0 0 350px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.about-photo {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 8px solid rgba(42, 82, 152, 0.3);
+    box-shadow: 0 10px 40px rgba(30, 60, 114, 0.25);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.about-photo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
+.about-text {
+    flex: 1;
+    background: #f8f9ff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
+    color: #1e3c72;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .about-text {
+    background: rgba(26, 35, 50, 0.85);
+    color: #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-text h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+}
+
+/* ==========================
+   SECCIÓN TECNOLOGÍAS
+========================== */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.skill-item:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+.skill-item span {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #1e3c72;
+}
+
+body.dark-mode .skill-item span {
+    color: #e2e8f0;
+}
+
+/* ==========================
+   SECCIÓN LOGROS
+========================== */
+.achievements {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.achievement {
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background: #f0f4ff;
+    box-shadow: 0 8px 20px rgba(30, 60, 114, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.achievement:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(30, 60, 114, 0.2);
+}
+
+.achievement h2 {
+    font-size: 1.5rem;
+    color: #1e3c72;
+}
+
+.achievement p {
+    font-size: 0.9rem;
+    color: #1e3c72;
+}
+
+body.dark-mode .achievement {
+    background: rgba(26, 35, 50, 0.85);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .achievement h2,
+body.dark-mode .achievement p {
+    color: #e2e8f0;
+}
+
+/* ==========================
+   FOOTER (sin cambios)
+========================== */
+.footer {
+    background: #1e3c72;
+    color: white;
+    padding: 3rem 5%;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+body.dark-mode .footer {
+    background: #0a1628;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    transform: scale(1.2);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 968px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .about-image {
+        flex: 0 0 250px;
+    }
+
+    .about-photo {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-text {
+        padding: 1.5rem 2rem;
+    }
+
+    .about-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-text p {
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-right {
+        gap: 1rem;
+    }
+
+    .nav-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .skills {
+        gap: 1rem;
+    }
+
+    .achievements {
+        gap: 1rem;
+    }
+}
