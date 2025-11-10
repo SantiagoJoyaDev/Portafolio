@@ -7,93 +7,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Habilidades - Santiago Joya</title>
     <link rel="icon" type="image/png" href="{% static 'portfolio/img/Favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/habilidades.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- ======= NAVBAR ======= -->
     <nav class="navbar">
         <div class="logo">Santiago Joya</div>
         <ul class="nav-links">
-            <li><a href="{% url 'home' %}" id="nav-home">Inicio</a></li>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
             <li><a href="{% url 'sobre_mi' %}">Sobre Mí</a></li>
             <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
-            <li><a href="{% url 'habilidades' %}" id="nav-skills">Habilidades</a></li>
+            <li><a href="{% url 'habilidades' %}" class="active">Habilidades</a></li>
             <li><a href="{% url 'contacto' %}">Contacto</a></li>
         </ul>
 
         <div class="nav-right">
             <button id="lang-toggle" class="nav-btn">🌐 EN</button>
-            <button id="dark-mode-toggle" class="nav-btn">🌙</button>
+            <button id="dark-mode-toggle" class="nav-btn"></button>
         </div>
     </nav>
 
-    <section class="about-section">
-        <div class="about-container">
-            <div class="about-text">
+    <!-- ======= SECCIÓN HABILIDADES ======= -->
+    <section class="skills-section">
+        <div class="skills-container-wrapper">
+            <div class="skills-header">
                 <h1 id="title">Habilidades</h1>
                 <p id="bio">
-                    Mis principales habilidades incluyen programación web, desarrollo backend, bases de datos y buenas prácticas de software. También destaco en resolución de problemas y aprendizaje de nuevas tecnologías.
+                    Tengo experiencia en desarrollo web y backend, manejo de bases de datos y buenas prácticas de
+                    programación. Me gusta resolver problemas, aprender nuevas tecnologías y seguir mejorando cada día
+                    como desarrollador. Siempre busco aprender y asumir nuevos retos que me ayuden a crecer
+                    profesionalmente.
                 </p>
+            </div>
 
-                <div class="skills">
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/html.png' %}" alt="HTML">
-                        <span>HTML</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/css.png' %}" alt="CSS">
-                        <span>CSS</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/python.png' %}" alt="Python">
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/php.png' %}" alt="PHP">
-                        <span>PHP</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/django.png' %}" alt="Django">
-                        <span>Django</span>
-                    </div>
-                    <div class="skill-item">
-                        <img src="{% static 'portfolio/img/laravel.png' %}" alt="Laravel">
-                        <span>Laravel</span>
-                    </div>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/html.png' %}" alt="HTML">
+                    <span>HTML</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/css.png' %}" alt="CSS">
+                    <span>CSS</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/python.png' %}" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/php.png' %}" alt="PHP">
+                    <span>PHP</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/django.png' %}" alt="Django">
+                    <span>Django</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/laravel.png' %}" alt="Laravel">
+                    <span>Laravel</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/Github.png' %}" alt="Laravel">
+                    <span>Github</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/Git.png' %}" alt="Laravel">
+                    <span>Git</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/Postgresql.png' %}" alt="Laravel">
+                    <span>Postgresql</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/Mongodb.png' %}" alt="Laravel">
+                    <span>Mongodb</span>
+                </div>
+                <div class="skill-item">
+                    <img src="{% static 'portfolio/img/Mysql.png' %}" alt="Laravel">
+                    <span>Mysql</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ======= FOOTER ======= -->
     <footer class="footer">
         <p>© 2025 Santiago Joya Blanco</p>
-        <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
     </footer>
 
+    <!-- ======= SCRIPT DE IDIOMA Y MODO OSCURO ======= -->
     <script>
+        // ==========================
+        // MODO OSCURO
+        // ==========================
+        let darkMode = false;
         const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+        const themeIcon = document.createElement('span');
+        themeIcon.id = 'themeIcon';
+        themeIcon.textContent = '🌙';
+        darkModeToggle.textContent = '';
+        darkModeToggle.appendChild(themeIcon);
 
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode');
+            themeIcon.textContent = darkMode ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', darkMode);
+        }
+
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                darkMode = true;
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            }
+        });
+
+        // ==========================
+        // CAMBIO DE IDIOMA
+        // ==========================
         const langToggle = document.getElementById('lang-toggle');
         const title = document.getElementById('title');
         const bio = document.getElementById('bio');
         let lang = 'es';
+
         langToggle.addEventListener('click', () => {
             if (lang === 'es') {
                 title.textContent = 'Skills';
-                bio.textContent = "My main skills include web programming, backend development, databases, and software best practices. I also excel in problem-solving and learning new technologies.";
+                bio.textContent = "I have experience in web and backend development, database management and good programming practices. I like to solve problems, learn new technologies and continue improving every day as a developer."
+                "I always seek to learn and take on new challenges that help me grow professionally.";
                 langToggle.textContent = '🌐 ES';
                 lang = 'en';
             } else {
                 title.textContent = 'Habilidades';
-                bio.textContent = "Mis principales habilidades incluyen programación web, desarrollo backend, bases de datos y buenas prácticas de software. También destaco en resolución de problemas y aprendizaje de nuevas tecnologías.";
+                bio.textContent = "Tengo experiencia en desarrollo web y backend, manejo de bases de datos y buenas prácticas de programación. Me gusta resolver problemas, aprender nuevas tecnologías y seguir mejorando cada día como"
+                "desarrollador. Siempre busco aprender y asumir nuevos retos que me ayuden a crecer profesionalmente.";
                 langToggle.textContent = '🌐 EN';
                 lang = 'es';
             }
         });
     </script>
 </body>
+
 </html>
