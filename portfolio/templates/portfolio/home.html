@@ -7,6 +7,8 @@
     <title>Portafolio - Santiago Joya</title>
     <link rel="icon" type="image/png" href="{% static 'portfolio/img/Favicon.png' %}">
     <link rel="stylesheet" href="{% static 'portfolio/css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 
@@ -16,11 +18,11 @@
         <div class="logo">Santiago Joya</div>
         <div class="nav-right">
             <ul class="nav-links">
-                <li><a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a></li>
+                <li><a href="{% url 'home' %}" data-es="Inicio" data-en="Home">Inicio</a></li>
                 <li><a href="{% url 'sobre_mi' %}" data-es="Sobre Mí" data-en="About Me">Sobre Mí</a></li>
-                <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
-                <li><a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
-                <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+                <li><a href="{% url 'proyectos' %}" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+                <li><a href="{% url 'habilidades' %}" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+                <li><a href="{% url 'contacto' %}" data-es="Contacto" data-en="Contact">Contacto</a></li>
             </ul>
             <button class="language-switcher" onclick="toggleLanguage()">
                 <span class="language-icon">🌐</span>
@@ -71,55 +73,67 @@
 
     <section class="sections-container">
         <div class="section-grid">
-            <div class="section-card" onclick="window.location.href='#proyectos'">
-                <div class="section-icon">🚀</div>
-                <h3 data-es="Proyectos" data-en="Projects">Proyectos</h3>
-                <p data-es="Proyectos personales y académicos que he desarrollado para practicar y demostrar mis habilidades en desarrollo web y programación."
-                    data-en="Personal and academic projects I've developed to practice and demonstrate my web development and programming skills.">
-                    Proyectos personales y académicos que he desarrollado para practicar y demostrar mis habilidades en
-                    desarrollo web y programación.
-                </p>
-            </div>
+            <a href="{% url 'proyectos' %}" class="section-card-link">
+                <div class="section-card">
+                    <div class="section-icon">🚀</div>
+                    <h3 data-es="Proyectos" data-en="Projects">Proyectos</h3>
+                    <p data-es="Proyectos personales y académicos que he desarrollado para practicar y demostrar mis habilidades en desarrollo web y programación."
+                        data-en="Personal and academic projects I've developed to practice and demonstrate my web development and programming skills.">
+                        Proyectos personales y académicos que he desarrollado para practicar y demostrar mis habilidades
+                        en desarrollo web y programación.
+                    </p>
+                </div>
+            </a>
 
-            <div class="section-card" onclick="window.location.href='#habilidades'">
-                <div class="section-icon">⚡</div>
-                <h3 data-es="Habilidades" data-en="Skills">Habilidades</h3>
-                <p data-es="Tecnologías que manejo y con las que he trabajado: HTML, CSS, JavaScript, Python y frameworks modernos que estoy aprendiendo."
-                    data-en="Technologies I handle and have worked with: HTML, CSS, JavaScript, Python, and modern frameworks I'm learning.">
-                    Tecnologías que manejo y con las que he trabajado: HTML, CSS, JavaScript, Python y frameworks
-                    modernos que estoy aprendiendo.
-                </p>
-            </div>
+            <a href="{% url 'habilidades' %}" class="section-card-link">
+                <div class="section-card">
+                    <div class="section-icon">⚡</div>
+                    <h3 data-es="Habilidades" data-en="Skills">Habilidades</h3>
+                    <p data-es="Tecnologías que manejo y con las que he trabajado: HTML, CSS, JavaScript, Python y frameworks modernos que estoy aprendiendo."
+                        data-en="Technologies I handle and have worked with: HTML, CSS, JavaScript, Python, and modern frameworks I'm learning.">
+                        Tecnologías que manejo y con las que he trabajado: HTML, CSS, JavaScript, Python y frameworks
+                        modernos que estoy aprendiendo.
+                    </p>
+                </div>
+            </a>
 
-            <div class="section-card" onclick="window.location.href='#educacion'">
-                <div class="section-icon">📚</div>
-                <h3 data-es="Educación" data-en="Education">Educación</h3>
-                <p data-es="Mi formación académica, cursos completados y certificaciones que respaldan mi preparación como desarrollador."
-                    data-en="My academic background, completed courses, and certifications that support my preparation as a developer.">
-                    Mi formación académica, cursos completados y certificaciones que respaldan mi preparación como
-                    desarrollador.
-                </p>
-            </div>
-
-            <div class="section-card" onclick="window.location.href='#contacto'">
-                <div class="section-icon">📧</div>
-                <h3 data-es="Contacto" data-en="Contact">Contacto</h3>
-                <p data-es="¿Buscas un desarrollador junior motivado? Me encantaría ser parte de tu equipo y seguir aprendiendo."
-                    data-en="Looking for a motivated junior developer? I'd love to be part of your team and keep learning.">
-                    ¿Buscas un desarrollador junior motivado? Me encantaría ser parte de tu equipo y seguir aprendiendo.
-                </p>
-            </div>
+            <a href="{% url 'contacto' %}" class="section-card-link">
+                <div class="section-card">
+                    <div class="section-icon">📧</div>
+                    <h3 data-es="Contacto" data-en="Contact">Contacto</h3>
+                    <p data-es="¿Buscas un desarrollador junior motivado? Me encantaría ser parte de tu equipo y seguir aprendiendo."
+                        data-en="Looking for a motivated junior developer? I'd love to be part of your team and keep learning.">
+                        ¿Buscas un desarrollador junior motivado? Me encantaría ser parte de tu equipo y seguir
+                        aprendiendo.
+                    </p>
+                </div>
+            </a>
         </div>
     </section>
+
     <!-- Sección principal -->
 
     <footer class="footer">
-        <p>&copy; 2025 Santiago Joya Blanco.</p>
         <div class="social-links">
-            <a href="#" title="GitHub">💻</a>
-            <a href="#" title="LinkedIn">👔</a>
-            <a href="#" title="Twitter">🐦</a>
-            <a href="#" title="Email">📧</a>
+            <footer>
+                <p>© 2025 Santiago Joya Blanco.</p>
+                <div class="social-icons">
+                    <a href="https://github.com/SantiagoJoyaDev/SantiagoJoya" target="_blank" class="icon github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/santiago-joya-2221b4251/" target="_blank"
+                        class="icon linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/0santiago_jb1/" target="_blank" class="icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://outlook.live.com/mail/0/" target="_blank" class="icon mail">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </footer>
+
         </div>
     </footer>
 
@@ -156,7 +170,7 @@
             }
         });
 
-        
+
         // Crear partículas animadas
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 50; i++) {

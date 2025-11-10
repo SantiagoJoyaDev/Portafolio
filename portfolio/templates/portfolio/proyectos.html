@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos - Santiago Joya</title>
+    <link rel="icon" type="image/png" href="{% static 'portfolio/img/Favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/proyectos.css' %}">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="logo">Santiago Joya</div>
+            <ul class="nav-links">
+                <li><a id="nav-home" href="{% url 'home' %}">Inicio</a></li>
+                <li><a id="nav-about" href="{% url 'sobre_mi' %}">Sobre Mí</a></li>
+                <li><a id="nav-projects" href="{% url 'proyectos' %}">Proyectos</a></li>
+                <li><a id="nav-skills" href="{% url 'habilidades' %}">Habilidades</a></li>
+                <li><a id="nav-contact" href="{% url 'contacto' %}">Contacto</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="lang-toggle" class="nav-btn">🌐 EN</button>
+                <button id="dark-mode-toggle" class="nav-btn">🌙</button>
+            </div>
+        </nav>
+
+        <!-- Círculo con el icono de GitHub -->
+        <section class="github-section">
+            <div class="github-circle">
+                <i class="fab fa-github"></i>
+            </div>
+        </section>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <section class="projects-section">
+                <div class="projects-container">
+                    <h1 id="title">Proyectos</h1>
+                    <p id="bio">
+                        Aquí puedes ver algunos de los proyectos que he desarrollado con tecnologías como HTML, CSS,
+                        JavaScript, Python, PHP, Laravel, Django y MySQL.
+                    </p>
+
+                    <div class="projects-grid">
+                        <div class="project-container">
+                            <div class="project-card">
+                                <h2 id="project1-title">Proyecto juego batalla naval</h2>
+                                <p id="project1-desc">
+                                    <a href="https://github.com/SantiagoJoyaDev/Proyecto-Juego-Batalla-Naval-Python"
+                                        target="_blank" class="no-link-style">Ver en GitHub</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="project-container">
+                            <div class="project-card">
+                                <h2 id="project2-title">Sigap-Psc</h2>
+                                <p id="project2-desc">
+                                    <a href="https://github.com/SantiagoJoyaDev/Proyecto-Sigap-Psc" target="_blank"
+                                        class="no-link-style">Ver en GitHub</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="project-container">
+                            <div class="project-card">
+                                <h2 id="project3-title">Proximamente</h2>
+                                <p id="project3-desc">
+                                    <a href="#Proximamente" target="_blank"
+                                        class="no-link-style">Ver en GitHub</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 Santiago Joya Blanco</p>
+        </footer>
+    </div>
+
+    <!-- Script modo oscuro + idiomas -->
+    <script>
+        // ==========================
+        // MODO OSCURO
+        // ==========================
+        let darkMode = false;
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const themeIcon = document.createElement('span');
+        themeIcon.id = 'themeIcon';
+        themeIcon.textContent = '🌙';
+        darkModeToggle.textContent = '';
+        darkModeToggle.appendChild(themeIcon);
+
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            document.body.classList.toggle('dark-mode');
+            themeIcon.textContent = darkMode ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', darkMode);
+        }
+
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                darkMode = true;
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            }
+        });
+
+        // ==========================
+        // CAMBIO DE IDIOMA
+        // ==========================
+        const langToggle = document.getElementById('lang-toggle');
+        let lang = 'es';
+
+        const translations = {
+            es: {
+                navHome: 'Inicio',
+                navAbout: 'Sobre Mí',
+                navProjects: 'Proyectos',
+                navSkills: 'Habilidades',
+                navContact: 'Contacto',
+                title: 'Proyectos',
+                bio: 'Aquí puedes ver algunos de los proyectos que he desarrollado con tecnologías como HTML, CSS, JavaScript, Python, PHP, Laravel, Django y MySQL.',
+                project1Title: 'Juego de Batalla Naval',
+                project1Desc: 'Ver en GitHub',
+                project2Desc: 'Ver en GitHub',
+                project3Desc: 'Ver en GitHub' // solo traducimos el enlace
+            },
+            en: {
+                navHome: 'Home',
+                navAbout: 'About Me',
+                navProjects: 'Projects',
+                navSkills: 'Skills',
+                navContact: 'Contact',
+                title: 'Projects',
+                bio: "Here you can see some of the projects I've developed using technologies like HTML, CSS, JavaScript, Python, PHP, Laravel, Django, and MySQL.",
+                project1Title: 'Battleship Game',
+                project1Desc: 'View on GitHub',
+                project2Desc: 'View on GitHub',
+                project3Desc: 'View on GitHub' // solo traducimos el enlace
+            }
+        };
+
+        const elements = {
+            navHome: document.getElementById('nav-home'),
+            navAbout: document.getElementById('nav-about'),
+            navProjects: document.getElementById('nav-projects'),
+            navSkills: document.getElementById('nav-skills'),
+            navContact: document.getElementById('nav-contact'),
+            title: document.getElementById('title'),
+            bio: document.getElementById('bio'),
+            project1Title: document.getElementById('project1-title'),
+            project1Desc: document.getElementById('project1-desc').querySelector('a'),
+            project2Desc: document.getElementById('project2-desc').querySelector('a'),
+            project3Desc: document.getElementById('project3-desc').querySelector('a')
+            // project2-title se queda fijo
+        };
+
+        langToggle.addEventListener('click', () => {
+            lang = lang === 'es' ? 'en' : 'es';
+            for (const key in elements) {
+                if (elements[key]) {
+                    elements[key].textContent = translations[lang][key];
+                }
+            }
+            langToggle.textContent = lang === 'es' ? '🌐 EN' : '🌐 ES';
+        });
+    </script>
+</body>
+
+</html>

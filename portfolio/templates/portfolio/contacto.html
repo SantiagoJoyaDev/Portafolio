@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Santiago Joya</title>
+    <link rel="icon" type="image/png" href="{% static 'portfolio/img/Favicon.png' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Santiago Joya</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'home' %}" id="nav-home">Inicio</a></li>
+            <li><a href="{% url 'sobre_mi' %}">Sobre Mí</a></li>
+            <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
+            <li><a href="{% url 'habilidades' %}">Habilidades</a></li>
+            <li><a href="{% url 'contacto' %}" id="nav-contact">Contacto</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <button id="lang-toggle" class="nav-btn">🌐 EN</button>
+            <button id="dark-mode-toggle" class="nav-btn">🌙</button>
+        </div>
+    </nav>
+
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h1 id="title">Contacto</h1>
+                <p id="bio">
+                    Puedes escribirme a través del siguiente formulario o contactarme mediante mis redes sociales. ¡Estaré encantado de recibir tu mensaje!
+                </p>
+
+                <form class="skills" action="#" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Nombre" required style="padding:10px; border-radius:8px; border:1px solid #ccc; width: 200px;">
+                    <input type="email" name="email" placeholder="Correo electrónico" required style="padding:10px; border-radius:8px; border:1px solid #ccc; width: 200px;">
+                    <textarea name="message" placeholder="Mensaje" required style="padding:10px; border-radius:8px; border:1px solid #ccc; width: 400px; height:120px;"></textarea>
+                    <button type="submit" class="nav-btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2025 Santiago Joya Blanco</p>
+        <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+
+        const langToggle = document.getElementById('lang-toggle');
+        const title = document.getElementById('title');
+        const bio = document.getElementById('bio');
+        let lang = 'es';
+        langToggle.addEventListener('click', () => {
+            if (lang === 'es') {
+                title.textContent = 'Contact';
+                bio.textContent = "You can write to me through the form below or contact me via my social networks. I’ll be happy to receive your message!";
+                langToggle.textContent = '🌐 ES';
+                lang = 'en';
+            } else {
+                title.textContent = 'Contacto';
+                bio.textContent = "Puedes escribirme a través del siguiente formulario o contactarme mediante mis redes sociales. ¡Estaré encantado de recibir tu mensaje!";
+                langToggle.textContent = '🌐 EN';
+                lang = 'es';
+            }
+        });
+    </script>
+</body>
+</html>
